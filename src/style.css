@@ -123,32 +123,21 @@ picture, svg {
   }
 }
 
-/* at 9:20-ish - Kevin Powell "Build a responsive websites with HTML & CSS|Part three: General Styling */
-.container {
-  --max-width: 1110px;
-  --padding: 1rem;
-
-  width: min(var(--max-width), 100% - (var(--padding)*2));
-  margin-inline: auto;
-}
-
-.even-columns {
-  display: grid;
-  gap: 1rem;
-}
-
-@media (min-width: 50em) {
-.even-columns {
-  grid-auto-flow: column;
-  grid-auto-columns: 1fr;
-}
-}
 
 /* General styling */
 body {
   font-size: var( --fs-body);
   font-family: var(--ff-body);
   color: var(--clr-primary-400);
+}
+
+p:not([class]) {
+  opacity: 0.7;
+  max-width: 32ch;
+}
+
+p[data-width="wide"] {
+  max-width: 42ch;
 }
 /* button */
 
@@ -282,6 +271,31 @@ background-color: var(--clr-accent-300);
   clip: rect(0, 0, 0, 0);
   white-space: nowrap; /* added line */
   border: 0;
+}
+
+/* at 9:20-ish - Kevin Powell "Build a responsive websites with HTML & CSS|Part three: General Styling */
+.container {
+  --max-width: 1110px;
+  --padding: 1rem;
+
+  width: min(var(--max-width), 100% - (var(--padding)*2));
+  margin-inline: auto;
+}
+
+.flow > * + * {
+  margin-top: var(--flow-spacer, 3em);
+}
+
+.even-columns {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 50em) {
+.even-columns {
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+}
 }
 
 .text-primary-400 {
