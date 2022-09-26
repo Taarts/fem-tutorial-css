@@ -270,6 +270,30 @@ background-color: var(--clr-accent-300);
 .footer-nav a:is(:hover, :focus){
   color: var(--clr-accent-400)
 }
+  /* social list */
+
+  .social-list {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--size-400);
+  }
+
+  .social-icon {
+    width: var(--size-600);
+    aspect-ratio: 1;
+    fill: var(--clr-neutral-100);
+  }
+
+ /* .social-list a:is(:hover, :focus) .social-icon {
+    fill: var(--clr-accent-400);
+  } */
+
+  @media (min-width: 50em) {
+    .social-icon {
+      width: var(--size-500);
+    }
+  }
+
     /* cta */
     .cta { 
       position: relative;
