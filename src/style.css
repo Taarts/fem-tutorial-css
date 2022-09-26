@@ -385,11 +385,79 @@ background-color: var(--clr-accent-300);
       opacity: 0.2;
     }
 }
+/* ep 8 -------------------------------------*/
 /* numbered items */
 .numbered-items {
 counter-reset: count;
+width: fit-content; 
+margin-inline: auto;
 }
 
+.numbered-items li {
+  counter-increment: count;
+}
+
+.numbered-items div {
+  display: grid;
+  position: relative;
+  align-items: center;
+  column-gap: var(--size-400);
+  grid-template-columns: min-content 1fr;
+}
+
+.numbered-items_title {
+  grid-row: 1 / 2;
+  grid-column: 2 / 3;
+  line-height: 1;
+}
+
+.numbered-items_body {
+  grid-column: 1 / -1;
+}
+
+@media (min-width: 30em) {
+  .numbered-items p {
+    grid-column: 2 / -1;
+  }
+}
+
+.numbered-items div::before,
+.numbered-items div::after {
+  height: 40px;
+}
+
+.numbered-items div::before {
+  content: "0" counter(count);
+  display: flex;
+  align-items: center;
+  color: var(--clr-neutral-100);
+  background-color: var(--clr-accent-400);
+  font-weight: var(--fw-bold);
+  padding: 0 var(--size-500);
+  height: 40px;
+  border-radius: 100vw;
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+}
+
+@media (max-width: 30em){
+  .numbered-items div::after {
+    --bg: var(--clr-accent-100);
+    content: "";
+    display: block;
+    z-index: -1;
+    border-radius: 100vw 0 0 100vw;
+    inset: 0 -100vw 0 0 ;
+    grid-column: 1 / -1;
+    grid-row: 1 / 2;
+    height: 40px;
+    width: 100%;
+    box-shadow: 5em 0 0 var(--bg);
+    background-color: var(--bg);
+  }
+}
+
+/* ----------------------------------------------------------------- */
 /* Utility classes */
 
 .visually-hidden {
@@ -407,9 +475,8 @@ counter-reset: count;
 /* at 9:20-ish - Kevin Powell "Build a responsive websites with HTML & CSS|Part three: General Styling */
 .container {
   --max-width: 1110px;
-  --padding: 1rem;
-
-  width: min(var(--max-width), 100% - (var(--padding) *2));
+  --container-padding: 1rem;
+  width: min(var(--max-width), 100% - (var(--container-padding) *2));
   margin-inline: auto;
 }
 
@@ -423,6 +490,7 @@ counter-reset: count;
     grid-auto-columns: 1fr;
     }
   }
+
 .vertical-align-center {
   align-items: center;
 }
@@ -440,6 +508,22 @@ counter-reset: count;
   margin-top: var(--flow-spacer, 3em);
 }
 
+.text-center {
+  text-align: center;
+}
+
+.text-center p {
+  margin-inline: auto;
+}
+
+@media (max-width: 50em ){
+.text-center-sm-only {
+  text-align: center;
+}
+.text-center-sm-only p {
+  margin-inline: auto;
+}
+}
 .text-primary-400 {
   color: var(--clr-primary-400)
 }
@@ -507,6 +591,10 @@ background-color: var(--clr-neutral-900);
 
 .padding-block-700 {
   padding-block: var(--size-700);
+}
+
+.margin-bottom-700 {
+  padding-block-end: var(--size-700);
 }
 
 .display-sm-none {
